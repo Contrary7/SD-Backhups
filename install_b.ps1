@@ -2,18 +2,21 @@
 $ErrorActionPreference = "Stop"
 
 # Ensure Administrator privileges so Defender exclusion calls succeed
-if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Host "[SteamDaddy] Relaunching installer with Administrator privileges to apply path exclusions..." -ForegroundColor Yellow
-    if ($PSCommandPath) {
-        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
-    } else {
-        try {
-            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"Invoke-RestMethod https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | Invoke-Expression`"" -Verb RunAs
-        } catch {
-            Write-Host "[SteamDaddy] Elevation failed or was cancelled. Please right-click PowerShell and select 'Run as Administrator', then run the command again." -ForegroundColor Red
+$isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if (-not $isAdmin) {
+    Write-Host "[SteamDaddy] Attempting to relaunch installer with Administrator privileges..." -ForegroundColor Yellow
+    try {
+        if ($PSCommandPath) {
+            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs -ErrorAction Stop
+            exit
+        } else {
+            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | iex`"" -Verb RunAs -ErrorAction Stop
+            exit
         }
+    } catch {
+        Write-Host "[SteamDaddy] Could not auto-elevate ($($_.Exception.Message)). Continuing installation in standard mode..." -ForegroundColor Yellow
     }
-    exit
 }
 
 Write-Host "[SteamDaddy] Fetching latest release..." -ForegroundColor Cyan
