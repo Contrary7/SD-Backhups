@@ -7,7 +7,11 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     if ($PSCommandPath) {
         Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     } else {
-        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | iex`"" -Verb RunAs
+        try {
+            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"Invoke-RestMethod https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | Invoke-Expression`"" -Verb RunAs
+        } catch {
+            Write-Host "[SteamDaddy] Elevation failed or was cancelled. Please right-click PowerShell and select 'Run as Administrator', then run the command again." -ForegroundColor Red
+        }
     }
     exit
 }
