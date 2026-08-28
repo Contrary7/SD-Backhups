@@ -7,7 +7,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     if ($PSCommandPath) {
         Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     } else {
-        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/Contrary7nit/SteamDaddy/main/install.ps1 | iex`"" -Verb RunAs
+        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/Contrary7/SD-Backups/main/install_b.ps1 | iex`"" -Verb RunAs
     }
     exit
 }
@@ -15,7 +15,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Write-Host "[SteamDaddy] Fetching latest release..." -ForegroundColor Cyan
 
 try {
-    $downloadUrl = "https://github.com/Contrary7nit/SteamDaddy/releases/latest/download/SteamDaddy.exe"
+    $downloadUrl = "https://github.com/Contrary7/SD-Backups/releases/latest/download/SteamDaddy.exe"
 
     $desktop = [Environment]::GetFolderPath("Desktop")
     $destPath = Join-Path $desktop "SteamDaddy.exe"
