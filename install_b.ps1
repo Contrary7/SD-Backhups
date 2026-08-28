@@ -11,7 +11,7 @@ if (-not $isAdmin) {
             Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs -ErrorAction Stop
             exit
         } else {
-            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install.ps1 | iex`"" -Verb RunAs -ErrorAction Stop
+            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | iex`"" -Verb RunAs -ErrorAction Stop
             exit
         }
     } catch {
