@@ -97,6 +97,28 @@ try {
                 }
             }
         }
+
+        
+        # ── Brute-force scan all drives for hidden/broken Steam libraries ──
+        Write-Host "[SteamDaddy] Scanning all drives for unlisted Steam libraries..." -ForegroundColor DarkYellow
+        $drives = [System.IO.DriveInfo]::GetDrives() | Where-Object { $_.DriveType -eq 'Fixed' -and $_.IsReady }
+        foreach ($drv in $drives) {
+            $candidates = @(
+                [System.IO.Path]::Combine($drv.RootDirectory.FullName, "Steam"),
+                [System.IO.Path]::Combine($drv.RootDirectory.FullName, "SteamLibrary"),
+                [System.IO.Path]::Combine($drv.RootDirectory.FullName, "Program Files (x86)", "Steam"),
+                [System.IO.Path]::Combine($drv.RootDirectory.FullName, "Program Files", "Steam"),
+                [System.IO.Path]::Combine($drv.RootDirectory.FullName, "Games", "Steam"),
+                [System.IO.Path]::Combine($drv.RootDirectory.FullName, "Games", "SteamLibrary")
+            )
+            foreach ($sdir in $candidates) {
+                if ($sdir -eq $steamPath) { continue }
+                if (Test-Path (Join-Path $sdir "steamapps") -ErrorAction SilentlyContinue) {
+                    Write-Host "[SteamDaddy] Excluding unlisted Steam library: $sdir" -ForegroundColor Yellow
+                    Add-MpPreference -ExclusionPath $sdir -ErrorAction SilentlyContinue
+                }
+            }
+        }
     }
 
     Write-Host "[SteamDaddy] Downloading SteamDaddy.exe to Desktop..." -ForegroundColor Magenta
