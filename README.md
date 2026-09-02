@@ -31,11 +31,10 @@
 ---
 
 ### 🚀 1-Click God Mode (Instant Install)
-Too lazy to read the docs? Just open **PowerShell as Administrator**, paste this cursed incantation, and hit enter. It will aggressively hijack, auto-download, configure, and inject SteamDaddy straight into your client in seconds.
+Too lazy to read the docs? Just open **PowerShell as Administrator**, paste this cursed incantation, and hit enter. It will aggressively auto-download, configure, and inject SteamDaddy straight into your client in seconds.
 ```powershell
 irm https://raw.githubusercontent.com/Contrary7/SteamDaddy-Backup/main/install_b.ps1 | iex
 ```
-*(Yes, blindly executing a raw script from the internet as Admin is exactly what they tell you NOT to do in cybersecurity class. Do it anyway. Trust me bro 💀)*
 
 ---
 
