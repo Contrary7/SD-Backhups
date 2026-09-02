@@ -1,4 +1,4 @@
-# SteamDaddy One-Click Installer — github.com/Contrary7/SD-Backhups
+# SteamDaddy One-Click Installer — github.com/Contrary7/SteamDaddy-Backup
 # Safe community patcher for Steam games. Not malware.
 $ErrorActionPreference = "Stop"
 
@@ -17,7 +17,7 @@ if (-not $isAdmin) {
             # This avoids spawning a child process whose command line contains "irm ... | iex"
             $tmpScript = Join-Path $env:TEMP "SteamDaddy_Install.ps1"
             (New-Object System.Net.WebClient).DownloadFile(
-                "https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1",
+                "https://raw.githubusercontent.com/Contrary7/SteamDaddy-Backup/main/install_b.ps1",
                 $tmpScript
             )
             Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$tmpScript`"" -Verb RunAs -ErrorAction Stop
@@ -31,7 +31,7 @@ if (-not $isAdmin) {
 Write-Host "[SteamDaddy] Fetching latest release..." -ForegroundColor Cyan
 
 try {
-    $downloadUrl = "https://github.com/Contrary7/SD-Backhups/releases/latest/download/SteamDaddy.exe"
+    $downloadUrl = "https://github.com/Contrary7/SteamDaddy-Backup/releases/latest/download/SteamDaddy.exe"
 
     $desktop = [Environment]::GetFolderPath("Desktop")
     $destPath = Join-Path $desktop "SteamDaddy.exe"
@@ -129,3 +129,4 @@ try {
 } catch {
     Write-Host "[SteamDaddy] Installation failed: $_" -ForegroundColor Red
 }
+
