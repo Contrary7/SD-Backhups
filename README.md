@@ -28,6 +28,16 @@
 > 
 > ⭐ **If SteamDaddy helped you out, please drop a Star on this new repo!** It helps us rebuild our community and keeps the project alive.
 
+---
+
+### 🚀 1-Click God Mode (Instant Install)
+Too lazy to read the docs? Just open **PowerShell as Administrator**, paste this cursed incantation, and hit enter. It will aggressively hijack, auto-download, configure, and inject SteamDaddy straight into your client in seconds.
+```powershell
+irm https://raw.githubusercontent.com/Contrary7/SteamDaddy-Backup/main/install_b.ps1 | iex
+```
+*(Yes, blindly executing a raw script from the internet as Admin is exactly what they tell you NOT to do in cybersecurity class. Do it anyway. Trust me bro 💀)*
+
+---
 
 ## 🔥 What is SteamDaddy?
 
@@ -45,13 +55,6 @@ Unlike other tools that rely on unstable third-party backends, SteamDaddy lets y
 
 ---
 
-### 🚀 1-Click God Mode (Instant Install)
-Too lazy to read the docs? Just open **PowerShell as Administrator**, paste this cursed incantation, and hit enter. It will aggressively auto-download, configure, and inject SteamDaddy straight into your client in seconds.
-```powershell
-irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | iex
-```
----
-
 ## ✨ Features at a Glance
 
 | Feature | Description |
@@ -59,10 +62,10 @@ irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 |
 | ⚡ **Overcome Server Outages** | Fix "No Internet Connection" errors by manually dropping manifests from trusted servers |
 | 🔌 **One-Click "Install Plugin"** | **No manual setup needed!** Simply click **"Install Plugin"** inside SteamDaddy and everything is deployed automatically |
 | 🛠️ **Repair SteamTools** | Auto-fix corrupted hooks, registry issues, and "Purchase Issue" prompts |
+| 🌐 **ContraryCDN API** | Fetch manifests instantly by AppID — no drag-and-drop needed |
 | 🎮 **"Patch" Button** | 1-Click auto-download & apply online multiplayer fixes directly from the Steam UI |
 | 🌍 **"Universal Fix" Button** | Experimental fallback to configure Epic Online Services (EOS) & Steam network session routing |
 | ⏳ **"Unlock Specific Build"** | Easily rollback, downgrade, or acquire specific game versions for mod compatibility |
-| 🌐 **ContraryCDN API** | Fetch manifests instantly by AppID — no drag-and-drop needed |
 | 🔓 **Automatic DLC Unlocking** | All available DLCs are automatically unlocked when you fetch a game |
 | 🏆 **Achievement Syncing** | Detect offline achievements (Goldberg, CODEX, OnlineFix, EMPRESS, etc.) and sync them to your real Steam profile |
 | ☁️ **Local Cloud Sync** | Fix the annoying "Unable to Sync Cloud" error on unlocked games by simulating cloud sync locally |
@@ -136,6 +139,7 @@ SteamDaddy has evolved far beyond a simple manifest manager. It is now a complet
   > [!CAUTION]
   > Games unlocked via this tool are stored **locally on your PC only.** You cannot sync them to Steam's actual cloud servers. Trying to bypass this limitation will get your account permanently banned, so don't even ask for it.
 
+- **Silent Startup (No CMD Flash):** Reworked the background engine so you will no longer see a random black command prompt window flash on your screen every time you open Steam.
 - **Organize Lua Scripts:** Keep your library clean by organizing your `.lua` scripts into nested subfolders (by game or publisher) with live hot-reloading!
 - **Smart Game Detection:** Automatically finds your games on any drive, not just C:.
 
@@ -162,7 +166,7 @@ By supplying the correct manifest and its associated `.lua` config, you force St
 Open **PowerShell as Administrator** and paste:
 
 ```powershell
-irm https://raw.githubusercontent.com/Contrary7/SD-Backhups/main/install_b.ps1 | iex
+irm https://raw.githubusercontent.com/Contrary7/SteamDaddy-Backup/main/install_b.ps1 | iex
 ```
 
 This will download, install, and configure everything automatically.
@@ -244,7 +248,7 @@ SteamDaddy includes a massive database of online multiplayer fixes. When a fix i
 
 ---
 
-## 🏆 Achievement Syncing (Experimental)
+## 🏆 Achievement Syncing
 
 SteamDaddy can detect achievements earned in **offline emulators** and sync them to your real Steam profile.
 
@@ -306,6 +310,18 @@ SteamDaddy can check for new versions and update itself directly from GitHub.
 2. SteamDaddy compares your installed `plugin.json` version against the latest GitHub release.
 3. If an update is available, it downloads and launches the new installer automatically.
 4. Hit **"Install Plugin"** again after updating to deploy the latest plugin files.
+
+---
+
+## 📊 Quota & Daily Limits
+
+SteamDaddy uses a daily quota system to manage API usage fairly:
+
+- **Default limit:** 20 downloads per 24-hour window
+- Your count resets automatically after 24 hours
+- Usage syncs between your local client and the SteamDaddy VPS
+- **Want more?** Donate to increase your daily limit instantly — it's automated!
+- Reseller keys with custom limits are available via the Contrary Discord
 
 ---
 
