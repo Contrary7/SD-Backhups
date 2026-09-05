@@ -3,7 +3,7 @@
   <h1>SteamDaddy</h1>
   <p><b>The Ultimate SteamTools Alternative & Manifest Manager</b></p>
   <p><i>Unlock games, auto-patch online fixes, sync achievements, and manage DLCs — all from inside your Steam client.</i></p>
-  
+
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Platform](https://img.shields.io/badge/platform-windows-lightgray.svg)]()
   [![Discord](https://img.shields.io/badge/Discord-ContraryCDN-5865F2?logo=discord&logoColor=white)](https://discord.gg/XN6YGcUF89)
@@ -23,9 +23,9 @@
 ---
 
 > [!IMPORTANT]
-> **Welcome to the new official home of SteamDaddy!** 
+> **Welcome to the new official home of SteamDaddy!**
 > Our previous repository (which reached over **195+ ⭐**) was unexpectedly lost to the void. We are back, fully updated, and better than ever. The project lives on right here!
-> 
+>
 > ⭐ **If SteamDaddy helped you out, please drop a Star on this new repo!** It helps us rebuild our community and keeps the project alive.
 
 ---
@@ -126,9 +126,9 @@ SteamDaddy has evolved far beyond a simple manifest manager. It is now a complet
   <div align="center">
     <p><b>Before (Cloud Sync Error):</b></p>
     <img width="800" alt="Cloud Error Before" src="https://github.com/user-attachments/assets/c7ded4fd-43a0-4eb2-819a-7d46321c9983" />
-    
+
     <br><br>
-    
+
     <p><b>After (Locally Synced):</b></p>
     <img width="800" alt="Cloud Synced After 1" src="https://github.com/user-attachments/assets/16be9bc1-d42a-45b4-9b79-4690c45206a3" />
     <br>
@@ -350,3 +350,4 @@ By cloning, compiling, or executing code from this repository, you acknowledge t
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
